@@ -8,7 +8,6 @@ import java.util.List;
 
 public class LC438_Find_All_Anagrams_In_A_String {
     public List<Integer> findAnagrams(String s, String p) {
-        /*
         List<Integer> res = new LinkedList<>();
 
         if(s == null || s.length() == 0 || p == null || p.length() > s.length()) return res;
@@ -45,7 +44,6 @@ public class LC438_Find_All_Anagrams_In_A_String {
         }
 
         return true;
-        */
 
 
 
