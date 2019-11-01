@@ -22,7 +22,7 @@ public class LC94_Binary_Tree_Inorder_Traversal {
         return res;
         */
 
-        //Irritation
+        //Iteration
         List<Integer> res = new ArrayList<>();
 
         if(root == null) return res;
