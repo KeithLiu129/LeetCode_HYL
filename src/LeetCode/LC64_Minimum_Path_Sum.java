@@ -5,6 +5,6 @@ package LeetCode;
 
 public class LC64_Minimum_Path_Sum {
     public int minPathSum(int[][] grid) {
-
+        return 0;
     }
 }
