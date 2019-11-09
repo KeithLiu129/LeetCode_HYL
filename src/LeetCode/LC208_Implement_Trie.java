@@ -21,6 +21,7 @@ public class LC208_Implement_Trie {
 
             if (i == word.length() - 1) {
                 p.children[index].isEnd = true;
+
             }
         }
     }

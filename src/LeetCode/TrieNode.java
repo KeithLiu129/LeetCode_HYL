@@ -7,11 +7,9 @@ public class TrieNode {
 
 
     public TrieNode() {
-
     }
 
     public TrieNode(char c) {
         val = c;
     }
-
 }
