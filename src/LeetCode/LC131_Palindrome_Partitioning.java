@@ -9,36 +9,31 @@ public class LC131_Palindrome_Partitioning {
         List<List<String>> res = new ArrayList<>();
         if (s == null || s.length() == 0) return res;
 
-        int len = s.length();
-        boolean[][] isPal = new boolean[len][len];
+        boolean[][] isPalidrome = new boolean[s.length()][s.length()];
 
-        for (int i = 0; i < len; i++) {
-            isPal[i][i] = true;
-            for (int j = i; j >= 0; j--) {
-                if (s.charAt(j) == s.charAt(i) && (j + 1 == i || isPal[j + 1][i - 1])) {
-                    isPal[i][j] = true;
-                }
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = 0; j <= i; j++) {
+                if (s.charAt(i) == s.charAt(j))
+                isPalidrome[j][i] = i - j <= 2 || isPalidrome[j + 1][i - 1];
             }
         }
-        dfs (s, res, new ArrayList<String>(), 0, isPal);
+
+        List<String> part = new ArrayList<>();
+        dfs(res, part, isPalidrome, 0, s);
         return res;
     }
 
-    private void dfs(String s, List<List<String>> res, List<String> ans, int index, boolean[][] isPal) {
-        int len = s.length();
-
-        if (index == len) {
-            List<String> temp = new ArrayList<>(ans);
-            res.add(temp);
-            return;
+    private void dfs(List<List<String>> res, List<String> part, boolean[][] isPalidrome, int index, String s) {
+        if (index == s.length()) {
+            res.add(new ArrayList<>(part));
         }
 
-        for (int i = index; i < len; i++) {
-            if (isPal[index][i]) {
-                String str = s.substring(index, i + 1);
-                ans.add(str);
-                dfs(s, res, ans, index + 1, isPal);
-                ans.remove (ans.size() - 1);
+        for (int i = index; i < s.length(); i++) {
+            if (isPalidrome[index][i]) {
+                part.add(s.substring(index, i + 1));
+                dfs(res, part, isPalidrome, i + 1, s);
+                //wall
+                part.remove(part.size() - 1);
             }
         }
     }
