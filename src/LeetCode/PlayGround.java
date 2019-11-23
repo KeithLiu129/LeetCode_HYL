@@ -1,6 +1,4 @@
-package LeetCode;
-
-import java.util.Arrays;
+package testing;
 
 public class PlayGround {
     public static void main(String[] args) {
@@ -26,7 +24,7 @@ public class PlayGround {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr2[i]);
         }
-        */
+
 
         String s1 = "abc";
         String s2 = "abc";
@@ -35,6 +33,11 @@ public class PlayGround {
         System.out.println(s1 == s2);
         System.out.println(s3 == s4);
         System.out.println(s1 == s3);
+        */
+        Solution sol = new Solution();
+        String s = " 6-4 / 2 ";
+        int x = sol.calculate(s);
+        System.out.println(x);
 
     }
 }
