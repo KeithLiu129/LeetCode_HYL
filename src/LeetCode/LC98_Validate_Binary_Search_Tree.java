@@ -7,7 +7,7 @@ import java.util.List;
 public class LC98_Validate_Binary_Search_Tree {
     public boolean isValidBST(TreeNode root) {
         if(root == null) return true;
-        return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
+        return isValidBST(root, Long.MIN_VALUE,  Long.MAX_VALUE);
     }
     private boolean isValidBST(TreeNode root, long lowerBound, long upperBound) {
         //base case

@@ -1,46 +1,58 @@
 package testing;
 
+
 import java.util.*;
 
 class Solution {
-    public static boolean canCross(int[] stones) {
-        if (stones == null || stones.length <= 1) return false;
-        if (stones[1] - stones[0] != 1) return false;
+    static int res = 0;
+    public static int largestBSTSubtree(TreeNode root) {
+        if (root == null) return 0;
+        dfs(root);
+        return res;
 
-        HashMap<Integer, Boolean>[] mems = new HashMap[stones.length];
-        for (int i = 0; i < stones.length; i++) {
-            mems[i] = new HashMap<>();
-        }
-        return dfs(stones, 1, 1, mems);
     }
 
-    private static boolean dfs(int[] stones, int index, int k, HashMap<Integer, Boolean>[] mems) {
-        HashMap<Integer, Boolean> map = mems[index];
-        if (map.containsKey(k)) return map.get(k);
+    private static Result dfs(TreeNode root) {
+        int min, max, size;
+        if (root == null) return new Result(Integer.MAX_VALUE, Integer.MIN_VALUE, 0);
 
-        int len = stones.length;
-        if (index == len - 1) return true;
+        Result left = dfs(root.left);
+        Result right = dfs(root.right);
 
-        for (int i = index + 1; i < len; i++) {
-            int dis = stones[i] - stones[index];
-            if (dis < k - 1) continue;
-            if (dis > k + 1) break;
-
-            if (dis == k - 1 || dis == k || dis == k + 1){
-                if(dfs(stones, i, dis, mems)) {
-                    map.put(k, true);
-                    return true;
-                }
-            }
-
+        if (left == null || right == null || left.max >= root.val || right.min < root.val) {
+            return null;
+        }else {
+            min = (root.left == null) ? root.val : left.min;
+            max = (root.right == null) ? root.val : left.max;
+            size = left.size + right.size + 1;
+            res = Math.max(res, size);
         }
-        map.put(k, false);
-        return false;
+        return new Result(min, max, size);
     }
 
     public static void main(String[] args) {
-        int[] input = {0, 1, 2, 3, 4, 8, 9, 11};
-        System.out.println(canCross(input));
+        TreeNode root = new TreeNode(10);
+        root.left = null;
+        root.right = null;
+        System.out.println(largestBSTSubtree(root));
+    }
+}
+
+class Result {
+    public int min, max, size;
+
+    public Result(int min, int max, int size) {
+        this.min = min;
+        this.max = max;
+        this.size = size;
+    }
+}
+
+class TreeNode {
+    int val;
+    TreeNode left, right;
+    public TreeNode(int val) {
+        this.val = val;
     }
 }
 
