@@ -24,7 +24,7 @@ public class LC127_Word_Ladder {
                 List<String> nexts = convert(cur); //TODO
                 for (String next : nexts) {
                     if (set.contains(next)) {
-                        if (next.equals(beginWord)) return minLen + 1;
+                        if (next.equals(endWord)) return minLen + 1;
                         queue.offer(next);
                         set.remove(next);
                     }
