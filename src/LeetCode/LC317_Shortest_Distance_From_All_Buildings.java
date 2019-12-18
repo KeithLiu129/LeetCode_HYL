@@ -19,7 +19,7 @@ public class LC317_Shortest_Distance_From_All_Buildings {
         int row = grid.length;
         int col = grid[0].length;
         int[][] sum = new int[row][col];
-        int min = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
 
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
@@ -65,7 +65,7 @@ public class LC317_Shortest_Distance_From_All_Buildings {
         //corner case
         for (int curI = 0; curI < row; curI++) {
             for (int curJ = 0; curJ < col; curJ++) {
-                if (grid[curI][curJ] == 0 && visited[curI][curJ] == false ) {
+                if (grid[curI][curJ] == 0 && !visited[curI][curJ]) {
                     grid[curI][curJ] = 3; //a number with no meanings
                 }
             }

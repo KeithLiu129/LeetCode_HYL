@@ -8,36 +8,45 @@ import java.util.*;
 public class LC310_Minimum_Height_Trees {
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
         //corner case
-        if (n == 0) return new ArrayList<>();
-        if (n == 1) return Arrays.asList(0);
+        if (edges == null || edges.length == 0) return new ArrayList<>();
+        List<Integer> res = new ArrayList<>();
 
-        List<Set<Integer>> tree = new ArrayList<>(n);
-        for (int i = 0; i < n; i++) tree.add(new HashSet<>());
-        for (int[] edge: edges) {
-            tree.get(edge[0]).add(edge[1]);
-            tree.get(edge[1]).add(edge[0]);
+        int[] indegree = new int[n];
+        HashMap<Integer, List<Integer>> map = new HashMap<>();
+        for (int i = 0; i < n; i++) map.put(i, new ArrayList<>());
+        for (int i = 0; i < edges.length; i++) {
+            indegree[edges[i][0]]++;
+            indegree[edges[i][1]]++;
+            map.get(edges[i][0]).add(edges[i][1]);
+            map.get(edges[i][1]).add(edges[i][0]);
         }
 
-        List<Integer> leaves = new ArrayList<>();
+        Queue<Integer> q = new LinkedList<>();
         for (int i = 0; i < n; i++) {
-            if (tree.get(i).size() == 1) leaves.add(i);
-        }
-
-        while (n > 2) {
-            //delete the leaves
-            n -= leaves.size();
-            List<Integer> newLeaves = new ArrayList<>();
-
-            for (Integer i : leaves) {
-                int j = tree.get(i).iterator().next(); //find the neighbours of leaves i
-                tree.get(j).remove(i);
-
-                if (tree.get(j).size() == 1) newLeaves.add(j);
+            if (indegree[i] == 1) {
+                q.offer(i);
             }
+        }
+        int count = 0;
+        while (!q.isEmpty()) {
+            int size = q.size();
+            count += size;
+            for (int i = 0; i < size; i++) {
+                Integer id = q.poll();
+                indegree[id]--;
+                if (count == n) res.add(id);
 
-            leaves = newLeaves;
+                for (Integer adjId : map.get(id)) {
+                    if (indegree[adjId] != 0) {
+                        indegree[adjId]--;
+                        if (indegree[adjId] == 1) {
+                            q.offer(adjId);
+                        }
+                    }
+                }
+            }
         }
 
-        return leaves;
+        return res;
     }
 }
