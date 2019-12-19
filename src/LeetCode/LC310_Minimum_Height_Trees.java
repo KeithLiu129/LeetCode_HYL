@@ -32,7 +32,7 @@ public class LC310_Minimum_Height_Trees {
             int size = q.size();
             count += size;
             for (int i = 0; i < size; i++) {
-                Integer id = q.poll();
+                Integer id = q.poll();bi'ji
                 indegree[id]--;
                 if (count == n) res.add(id);
 
