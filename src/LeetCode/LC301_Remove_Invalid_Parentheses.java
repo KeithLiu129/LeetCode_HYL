@@ -41,14 +41,14 @@ public class LC301_Remove_Invalid_Parentheses {
             dfs(s, res, path, index + 1, theta, rmL - 1, rmR);
             // keep
             path.append('(');
-            dfs(s, res, path, index + 1, theta++, rmL, rmR);
+            dfs(s, res, path, index + 1, theta + 1,rmL, rmR);
             path.setLength(path.length() - 1);
         }else if (ch == ')') {
             //remove
             dfs(s, res, path, index + 1, theta, rmL, rmR - 1);
             //keep
             path.append(')');
-            dfs(s, res, path, index + 1, theta--, rmL, rmR);
+            dfs(s, res, path, index + 1, theta - 1, rmL, rmR);
             path.setLength(path.length() - 1);
         }else {
             path.append(ch);

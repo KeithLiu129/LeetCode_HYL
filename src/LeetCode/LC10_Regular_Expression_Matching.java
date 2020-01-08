@@ -5,7 +5,6 @@ package LeetCode;
 
 public class  LC10_Regular_Expression_Matching {
     public boolean isMatch(String s, String p) {
-        //c.c.
-        return true;
+
     }
 }

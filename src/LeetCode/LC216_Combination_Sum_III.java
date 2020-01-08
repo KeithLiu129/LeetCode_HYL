@@ -27,7 +27,7 @@ public class LC216_Combination_Sum_III {
 
         for(int i = index; i <= 9; i++) {
             list.add(i);
-            dfs(k - i, n , i + 1, result, list);
+            dfs(k, n - i, i + 1, result, list);
             //wall
             list.remove(list.size() - 1);
         }
