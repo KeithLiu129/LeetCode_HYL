@@ -18,7 +18,7 @@ public class LC90_Subsets_II {
             res.add(new ArrayList<>(parts));
 
         for (int i = index; i < nums.length; i++) {
-            if (i > 0 && nums[i] == nums[i - 1]) continue;
+            if (i != index && nums[i] == nums[i - 1]) continue;
             parts.add(nums[i]);
             dfs(nums, res, parts, i + 1);
             //wall
