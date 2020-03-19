@@ -4,8 +4,11 @@ package LeetCode;
 //https://leetcode.com/problems/two-sum/
 
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.BlockingDeque;
 
 public class LC1_Two_Sum {
     public int[] twoSum(int[] nums, int target) {
@@ -18,5 +21,18 @@ public class LC1_Two_Sum {
             map.put(nums[i], i);
         }
         return new int[0];
+        String.hashCode();
+
+        String s = "acb";
+        s = s + 'b';
+
+
+    }
+
+    public static void main(String[] args) {
+
+        String s = "acb";
+        s = s + 'b';
+        System.out.println(s);
     }
 }

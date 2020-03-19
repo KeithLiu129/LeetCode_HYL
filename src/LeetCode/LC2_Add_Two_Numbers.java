@@ -1,5 +1,8 @@
 package LeetCode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LC2_Add_Two_Numbers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         if (l1 == null && l2 == null) return null;
@@ -27,5 +30,6 @@ public class LC2_Add_Two_Numbers {
             prev.next = new ListNode(carry);
         }
         return dummy.next;
+
     }
 }
