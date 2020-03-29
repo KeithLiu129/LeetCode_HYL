@@ -5,7 +5,7 @@ import java.util.PriorityQueue;
 public class LC295_Find_Median_From_Data_Stream {
     PriorityQueue<Integer> minHeap;
     PriorityQueue<Integer> maxHeap;
-    public MedianFinder() {
+    public LC295_Find_Median_From_Data_Stream() {
         minHeap = new PriorityQueue<>((o1, o2) -> o1 - o2);
         maxHeap = new PriorityQueue<>((o1, o2) -> o2 - o1);
     }

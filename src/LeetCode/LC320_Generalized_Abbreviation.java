@@ -7,7 +7,7 @@ public class  LC320_Generalized_Abbreviation {
     public List<String> generateAbbreviations(String word) {
         List<String> res = new ArrayList<>();
         if (word == null || word.length() == 0) return res;
-        dfs(res, word, new StringBuilder(), 0, 0;
+        dfs(res, word, new StringBuilder(), 0, 0);
         return res;
     }
 

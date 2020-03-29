@@ -7,5 +7,7 @@ public class LC42_Trapping_Rain_Water {
         for (int i = 0; i < height.length; i++) {
 
         }
+
+        return 0;
     }
 }

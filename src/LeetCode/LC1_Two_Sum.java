@@ -21,12 +21,6 @@ public class LC1_Two_Sum {
             map.put(nums[i], i);
         }
         return new int[0];
-        String.hashCode();
-
-        String s = "acb";
-        s = s + 'b';
-
-
     }
 
     public static void main(String[] args) {
