@@ -18,7 +18,6 @@ public class MinHeap {
         if (capacity <= 0) throw new IllegalArgumentException("");
         arr = new int[capacity];
         size = 0;
-
     }
 
     public MinHeap() {
