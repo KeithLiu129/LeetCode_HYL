@@ -16,4 +16,3 @@ public class LC543_Diameter_Of_Binary_Tree {
             return Math.max(left, right) + 1;
         }
     }
-}

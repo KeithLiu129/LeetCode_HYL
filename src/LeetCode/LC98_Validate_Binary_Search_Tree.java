@@ -5,19 +5,16 @@ package LeetCode;
 import java.util.List;
 
 public class LC98_Validate_Binary_Search_Tree {
-    public boolean isValidBST(TreeNode root) {
-        if(root == null) return true;
-        return isValidBST(root, Long.MIN_VALUE,  Long.MAX_VALUE);
-    }
-    private boolean isValidBST(TreeNode root, long lowerBound, long upperBound) {
-        //base case
-        if(root == null) return true;
-
-        if(root.val >= upperBound || root.val <= lowerBound) {
-            return false;
+        public boolean isValidBST(TreeNode root) {
+            return helper(root, null, null);
         }
-        return isValidBST(root.left, lowerBound, root.val) && isValidBST(root.right, root.val, upperBound);
-
-
-    }
+        private boolean helper(TreeNode root, Integer lower, Integer upper) {
+            if (root == null) return true;
+            if ((lower != null && root.val <= lower) || (upper != null && root.val >= upper)) {
+                return false;
+            }
+            return helper(root.left, lower, root.val) && helper(root.right, root.val, upper);
+        }
 }
+
+
