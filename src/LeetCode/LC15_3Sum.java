@@ -24,7 +24,7 @@ public class LC15_3Sum {
                 if (sum == complement) {
                     res.add(Arrays.asList(nums[i], nums[left++], nums[right--]));
                     while (left < right && nums[left - 1] == nums[left]) left++;
-                    while (left < right && nums[right + 1] == nums[right]) right--;
+//                     while (left < right && nums[right + 1] == nums[right]) right--;
                 } else if (sum > complement) {
                     right--;
                 } else {
